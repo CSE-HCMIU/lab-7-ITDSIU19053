@@ -16,7 +16,18 @@ Ex:
 #define SIZE 1000
 
 void ex2(char *str[],int n){
-	//your codes here
+	 int len = strlen(str);
+	for ( int i = 0; i < strlen(str); i++){
+        for (int j = i + 1; j < strlen(str); j++ )
+        if( str[i] == str[j] )
+         {
+            str[j] = NULL;
+            len--;
+		
+        }
+
+    }
+    printf("%d", len);
 }
 
 int main(int argc, char *argv[]) {
