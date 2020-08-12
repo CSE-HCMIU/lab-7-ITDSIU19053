@@ -8,32 +8,21 @@ Ex:
 |_________________________________________|
 */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-#include<string.h>
-#include<limits.h>
-#define SIZE 1000
-
-void ex2(char *str[],int n){
-	 int len = strlen(str);
-	for ( int i = 0; i < strlen(str); i++){
-        for (int j = i + 1; j < strlen(str); j++ )
-        if( str[i] == str[j] )
-         {
-            str[j] = NULL;
-            len--;
-		
+#include <stdio.h>
+#include <string.h>
+void ex2(char str[][1000], int n){
+    int len = n;
+    for (int i = 0; i < n-1; i++)
+        for (int j = i+1; j < n; j++) {
+            if (str[i] == "") continue;
+            if (strcmp(str[i], str[j]) == 0) {
+                len--;
+                strcpy(str[j], "");
+            }
         }
-
-    }
     printf("%d", len);
 }
-
 int main(int argc, char *argv[]) {
-	
-	char *str[]={"ab","abcd","ab","abdr"};
-    ex2(str,4);
-		
-	return 0;
+	char str[][1000] = {"ab","abcd","ab","abdr"};
+    ex2(str, 4);
 }
